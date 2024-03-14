@@ -1,8 +1,6 @@
 window.addEventListener('load', () => {
 	const chessContainer = document.getElementById('chess');
 
-	chessContainer.innerText = '♞\n♞';
-
 	const svgNameSpace = 'http://www.w3.org/2000/svg';
 	const fieldLength = 100;
 
@@ -11,6 +9,7 @@ window.addEventListener('load', () => {
 	chessMainSvg.setAttributeNS(null, 'height', `${8 * fieldLength}px`);
 	chessContainer.appendChild(chessMainSvg);
 
+	//TODO: please use me!
 	const labels = {
 		horizontal: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
 		vertical: ['1', '2', '3', '4', '5', '6', '7', '8'],

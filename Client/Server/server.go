@@ -16,6 +16,6 @@ func main() {
 	fileServer := http.FileServer(http.Dir("../Static"))
 	http.Handle("/", fileServer)
 
-	log.Printf("Starting server for client on %s!", url)
+	log.Printf("Starting server for client on %s", url)
 	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", port), nil))
 }

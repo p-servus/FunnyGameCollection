@@ -1,6 +1,7 @@
-import Board from "./View/Board.js";
+import BoardView from "./View/BoardView.js";
 
 window.addEventListener('load', () => {
 	const chessContainer = document.getElementById('chess');
-	const board = new Board(chessContainer);
+	const boardView = new BoardView(chessContainer);
+	boardView.Render();
 });

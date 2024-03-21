@@ -1,4 +1,4 @@
-export default class Board {
+export default class BoardView {
     Render(containerDom) {
         const svgNameSpace = 'http://www.w3.org/2000/svg';
         const fieldLength = 100;

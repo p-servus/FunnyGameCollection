@@ -10,3 +10,13 @@ At first we want to create a chess:
 ## TODOs
 
 think about the structuring .. because the code is really ugly now
+
+-----------------
+
+- WebApp
+- Game-Api
+- Client-Client-Communication-Api
+- Shared-Core-Lib
+  - Interfaces
+  - Utilitys
+  - Rule-Logic

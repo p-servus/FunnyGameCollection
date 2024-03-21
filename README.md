@@ -2,21 +2,17 @@
 
 A funny game collection!!!!11!!!
 
-At first we want to create a chess:
-
-- node web server
-- web gui
-
-## TODOs
-
-think about the structuring .. because the code is really ugly now
-
------------------
+## Structure
 
 - WebApp
 - Game-Api
 - Client-Client-Communication-Api
 - Shared-Core-Lib
   - Interfaces
-  - Utilitys
+  - Utilities
   - Rule-Logic
+
+## TODOs:
+
+- cleaning BoardView (because much of constants are hard coded)
+- adding debugging for vscode (server/host and client/browser)

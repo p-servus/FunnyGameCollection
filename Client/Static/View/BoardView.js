@@ -1,12 +1,16 @@
 export default class BoardView {
-    Render(containerDom) {
+    constructor(containerDom) {
+        this._containerDom = containerDom
+    }
+
+    Render() {
         const svgNameSpace = 'http://www.w3.org/2000/svg';
         const fieldLength = 100;
 
         const chessMainSvg = document.createElementNS(svgNameSpace, 'svg');
         chessMainSvg.setAttributeNS(null, 'width', `${8 * fieldLength}px`);
         chessMainSvg.setAttributeNS(null, 'height', `${8 * fieldLength}px`);
-        containerDom.appendChild(chessMainSvg);
+        this._containerDom.appendChild(chessMainSvg);
 
         //TODO: please use me!
         const labels = {

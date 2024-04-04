@@ -13,7 +13,7 @@ const port = 8080
 var url = fmt.Sprintf("%s://%s:%d", schema, host, port)
 
 func main() {
-	fileServer := http.FileServer(http.Dir("../Static"))
+	fileServer := http.FileServer(http.Dir("../Client"))
 	http.Handle("/", fileServer)
 
 	log.Printf("Starting server for client on %s", url)

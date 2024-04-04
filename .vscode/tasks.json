@@ -1,0 +1,25 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "openWebAppForChrome",
+            "command": "chrome",
+            "type": "shell",
+            "args": [
+                "--user-data-dir=\"${workspaceFolder}/Gui/temp/Chrome/users/user1\"",
+                "--remote-debugging-port=9222",
+                "http://localhost:8080"
+            ]
+        },
+        {
+            "label": "openWebAppForChromium",
+            "command": "chromium",
+            "type": "shell",
+            "args": [
+                "--user-data-dir=\"${workspaceFolder}/Gui/temp/Chromium/users/user1\"",
+                "--remote-debugging-port=9223",
+                "http://localhost:8080"
+            ]
+        },
+    ]
+}

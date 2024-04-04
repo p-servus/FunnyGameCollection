@@ -14,5 +14,8 @@ A funny game collection!!!!11!!!
 
 ## TODOs:
 
-- cleaning BoardView (because much of constants are hard coded)
-- adding debugging for vscode (server/host and client/browser)
+-  [ ] cleaning BoardView (because much of constants are hard coded)
+
+## Done TODOs :-]
+
+- [x] adding debugging for vscode (server/host and client/browser)

@@ -19,3 +19,4 @@ A funny game collection!!!!11!!!
 ## Done TODOs :-]
 
 - [x] adding debugging for vscode (server/host and client/browser)
+- [x] adding figures

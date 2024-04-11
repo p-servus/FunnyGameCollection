@@ -18,7 +18,7 @@
             "type": "chrome",
             "request": "attach",
             "port": 9222,
-            "webRoot": "${workspaceFolder}/Gui/Static",
+            "webRoot": "${workspaceFolder}/Gui/Client",
             "preLaunchTask": "openWebAppForChrome"
         },
         {
@@ -26,7 +26,7 @@
             "type": "chrome",
             "request": "attach",
             "port": 9223,
-            "webRoot": "${workspaceFolder}/Gui/Static",
+            "webRoot": "${workspaceFolder}/Gui/Client",
             "preLaunchTask": "openWebAppForChromium"
         }
     ],

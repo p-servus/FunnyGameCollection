@@ -1,5 +1,5 @@
-import FigureView from './FigureView.js'
+import FigureBlackView from './FigureBlackView.js'
 
-export default class BishopRightBlackView extends FigureView {
+export default class BishopRightBlackView extends FigureBlackView {
 	asciiCharacter = '♝'
 }

@@ -122,11 +122,11 @@ export default class BoardView extends View {
                 rect.setAttributeNS(null, 'x', `${x * this.fieldLength + this.labelLength}px`)
                 rect.setAttributeNS(null, 'y', `${y * this.fieldLength + this.labelLength}px`)
 
-                const color = (x + y) % 2 == 0
-                    ? 'black'
-                    : 'green'
+                const cssFieldClass = (x + y) % 2 == 0
+                    ? 'blackField'
+                    : 'whiteField'
 
-                rect.setAttributeNS(null, 'fill', color)
+                rect.classList.add(cssFieldClass)
 
                 field.appendChild(rect)
                 this.mainSvgDom.appendChild(field)

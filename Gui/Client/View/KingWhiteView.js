@@ -1,5 +1,5 @@
-import FigureView from './FigureView.js'
+import FigureWhiteView from './FigureWhiteView.js'
 
-export default class KingWhiteView extends FigureView {
+export default class KingWhiteView extends FigureWhiteView {
 	asciiCharacter = '♔'
 }

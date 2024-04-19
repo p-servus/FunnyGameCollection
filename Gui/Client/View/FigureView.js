@@ -2,6 +2,7 @@ import View from "./View.js"
 
 export default class FigureView {
 	asciiCharacter = '?'
+	cssClass = null
 	position = null
     _boardView = null
 
@@ -20,6 +21,11 @@ export default class FigureView {
 		const labelLength = this._boardView.labelLength;
 
 		const textDom = document.createElementNS(View.SvgNameSpace, 'text')
+
+		if(this.cssClass) {
+			textDom.classList.add(this.cssClass)
+		}
+
 		textDom.setAttributeNS(null, 'text-anchor', 'middle')
 		textDom.setAttributeNS(null, 'alignment-baseline', 'central')
 

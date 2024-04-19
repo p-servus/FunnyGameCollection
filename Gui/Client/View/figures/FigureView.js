@@ -36,5 +36,17 @@ export default class FigureView extends View {
 
 		textDom.textContent = this.asciiCharacter
 		mainSvgDom.appendChild(textDom)
+
+		this.dom = textDom
+	}
+
+	setPosition(optionalNewPosition = null) {
+		if(optionalNewPosition !== null) {
+			this.position = optionalNewPosition
+		}
+
+		const field = this._boardView.fields[this.position[0]][this.position[1]]
+
+		field.addFigure(this)
 	}
 }

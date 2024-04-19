@@ -11,6 +11,7 @@ import KnightWhiteView from "../figures/figures/KnightWhiteView.js"
 import PawnBlackView from "../figures/figures/PawnBlackView.js"
 import PawnWhiteView from "../figures/figures/PawnWhiteView.js"
 import View from "../View.js"
+import FieldView from "./FieldView.js"
 
 export default class BoardView extends View {
     static labelsByDimension = [
@@ -22,6 +23,7 @@ export default class BoardView extends View {
     fieldLength = 100
     labelLength = 50
 
+    fields = []
     _figures = [
         new RookBlackView  ([0, 7], this),
         new KnightBlackView([1, 7], this),
@@ -108,23 +110,18 @@ export default class BoardView extends View {
     }
 
     RenderMainBoard() {
+        this.fields = []
+
         for (let x = 0; x < 8; x++) {
+            this.fields[x] = []
+
             for (let y = 0; y < 8; y++) {
-                const board = document.createElementNS(View.SvgNameSpace, 'g')
-                const field = document.createElementNS(View.SvgNameSpace, 'rect')
-                field.setAttributeNS(null, 'width', `${this.fieldLength}px`)
-                field.setAttributeNS(null, 'height', `${this.fieldLength}px`)
-                field.setAttributeNS(null, 'x', `${x * this.fieldLength + this.labelLength}px`)
-                field.setAttributeNS(null, 'y', `${y * this.fieldLength + this.labelLength}px`)
+                const position = [x, y];
+                const field = new FieldView(position, this)
 
-                const cssFieldClass = (x + y) % 2 == 0
-                    ? 'blackField'
-                    : 'whiteField'
+                this.fields[x][y] = field
 
-                field.classList.add(cssFieldClass)
-
-                board.appendChild(field)
-                this.mainSvgDom.appendChild(board)
+                field.Render()
             }
         }
     }
@@ -132,6 +129,8 @@ export default class BoardView extends View {
     RenderFigures() {
         this._figures.forEach((figureView, index) => {
             figureView.Render()
+
+            figureView.setPosition()
         });
     }
 }

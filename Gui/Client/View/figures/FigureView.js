@@ -1,12 +1,14 @@
 import View from "../View.js"
 
-export default class FigureView {
+export default class FigureView extends View {
 	asciiCharacter = '?'
 	cssClass = null
 	position = null
-    _boardView = null
+	_boardView = null
 
 	constructor(position, boardView) {
+		super()
+
 		this.position = position
 		this._boardView = boardView
 	}

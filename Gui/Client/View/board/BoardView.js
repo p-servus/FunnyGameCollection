@@ -1,16 +1,16 @@
-import QueenBlackView from "./figures/figures/QueenBlackView.js"
-import QueenWhiteView from "./figures/figures/QueenWhiteView.js"
-import KingBlackView from "./figures/figures/KingBlackView.js"
-import KingWhiteView from "./figures/figures/KingWhiteView.js"
-import BishopBlackView from "./figures/figures/BishopBlackView.js"
-import BishopWhiteView from "./figures/figures/BishopWhiteView.js"
-import RookBlackView from "./figures/figures/RookBlackView.js"
-import RookWhiteView from "./figures/figures/RookWhiteView.js"
-import KnightBlackView from "./figures/figures/KnightBlackView.js"
-import KnightWhiteView from "./figures/figures/KnightWhiteView.js"
-import PawnBlackView from "./figures/figures/PawnBlackView.js"
-import PawnWhiteView from "./figures/figures/PawnWhiteView.js"
-import View from "./View.js"
+import QueenBlackView from "../figures/figures/QueenBlackView.js"
+import QueenWhiteView from "../figures/figures/QueenWhiteView.js"
+import KingBlackView from "../figures/figures/KingBlackView.js"
+import KingWhiteView from "../figures/figures/KingWhiteView.js"
+import BishopBlackView from "../figures/figures/BishopBlackView.js"
+import BishopWhiteView from "../figures/figures/BishopWhiteView.js"
+import RookBlackView from "../figures/figures/RookBlackView.js"
+import RookWhiteView from "../figures/figures/RookWhiteView.js"
+import KnightBlackView from "../figures/figures/KnightBlackView.js"
+import KnightWhiteView from "../figures/figures/KnightWhiteView.js"
+import PawnBlackView from "../figures/figures/PawnBlackView.js"
+import PawnWhiteView from "../figures/figures/PawnWhiteView.js"
+import View from "../View.js"
 
 export default class BoardView extends View {
     static labelsByDimension = [
@@ -108,28 +108,23 @@ export default class BoardView extends View {
     }
 
     RenderMainBoard() {
-        //TODO: please use me!
-        const labels = {
-            horizontal: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
-            vertical: ['1', '2', '3', '4', '5', '6', '7', '8'],
-        }
         for (let x = 0; x < 8; x++) {
             for (let y = 0; y < 8; y++) {
-                const field = document.createElementNS(View.SvgNameSpace, 'g')
-                const rect = document.createElementNS(View.SvgNameSpace, 'rect')
-                rect.setAttributeNS(null, 'width', `${this.fieldLength}px`)
-                rect.setAttributeNS(null, 'height', `${this.fieldLength}px`)
-                rect.setAttributeNS(null, 'x', `${x * this.fieldLength + this.labelLength}px`)
-                rect.setAttributeNS(null, 'y', `${y * this.fieldLength + this.labelLength}px`)
+                const board = document.createElementNS(View.SvgNameSpace, 'g')
+                const field = document.createElementNS(View.SvgNameSpace, 'rect')
+                field.setAttributeNS(null, 'width', `${this.fieldLength}px`)
+                field.setAttributeNS(null, 'height', `${this.fieldLength}px`)
+                field.setAttributeNS(null, 'x', `${x * this.fieldLength + this.labelLength}px`)
+                field.setAttributeNS(null, 'y', `${y * this.fieldLength + this.labelLength}px`)
 
                 const cssFieldClass = (x + y) % 2 == 0
                     ? 'blackField'
                     : 'whiteField'
 
-                rect.classList.add(cssFieldClass)
+                field.classList.add(cssFieldClass)
 
-                field.appendChild(rect)
-                this.mainSvgDom.appendChild(field)
+                board.appendChild(field)
+                this.mainSvgDom.appendChild(board)
             }
         }
     }

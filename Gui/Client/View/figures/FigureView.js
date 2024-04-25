@@ -38,6 +38,7 @@ export default class FigureView extends View {
 		mainSvgDom.appendChild(textDom)
 
 		this.dom = textDom
+		this.setPosition()
 	}
 
 	setPosition(optionalNewPosition = null) {

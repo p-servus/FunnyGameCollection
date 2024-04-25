@@ -129,8 +129,6 @@ export default class BoardView extends View {
     RenderFigures() {
         this._figures.forEach((figureView, index) => {
             figureView.Render()
-
-            figureView.setPosition()
         });
     }
 }

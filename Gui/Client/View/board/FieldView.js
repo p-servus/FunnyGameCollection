@@ -21,6 +21,7 @@ export default class FieldView extends View {
 		const y = this.position[1]
 
 		const field = document.createElementNS(View.SvgNameSpace, 'g')
+		field.classList.add('field')
 		field.setAttributeNS(null, 'transform', `translate(${x * fieldLength + labelLength} ${y * fieldLength + labelLength})`)
 
 		const rect = document.createElementNS(View.SvgNameSpace, 'rect')
@@ -35,6 +36,13 @@ export default class FieldView extends View {
 
 		field.addEventListener('click', () => {
 			console.log('Bla = D', x, y)
+			field.classList.toggle('selected')
+			if (field.classList.contains('selected')) {
+				mainSvgDom.appendChild(field)
+			}
+			else {
+				mainSvgDom.prepend(field)
+			}
 		})
 
 		field.appendChild(rect)

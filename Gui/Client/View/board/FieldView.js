@@ -21,12 +21,11 @@ export default class FieldView extends View {
 		const y = this.position[1]
 
 		const field = document.createElementNS(View.SvgNameSpace, 'g')
+		field.setAttributeNS(null, 'transform', `translate(${x * fieldLength + labelLength} ${y * fieldLength + labelLength})`)
 
 		const rect = document.createElementNS(View.SvgNameSpace, 'rect')
 		rect.setAttributeNS(null, 'width', `${fieldLength}px`)
 		rect.setAttributeNS(null, 'height', `${fieldLength}px`)
-		rect.setAttributeNS(null, 'x', `${x * fieldLength + labelLength}px`)
-		rect.setAttributeNS(null, 'y', `${y * fieldLength + labelLength}px`)
 
 		const cssFieldClass = (x + y) % 2 == 0
 			? 'blackField'

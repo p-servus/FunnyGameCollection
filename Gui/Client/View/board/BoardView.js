@@ -24,7 +24,7 @@ export default class BoardView extends View {
     labelLength = 50
 
     fields = []
-    _figures = [
+    _figureViews = [
         new RookBlackView  ([0, 7], this),
         new KnightBlackView([1, 7], this),
         new BishopBlackView([2, 7], this),
@@ -62,9 +62,10 @@ export default class BoardView extends View {
         new PawnWhiteView  ([7, 1], this),
     ]
     
-    constructor(containerDom) {
+    constructor(containerDom, model) {
         super()
         this.containerDom = containerDom
+        this.model = model
 
         this.mainSvgDom = document.createElementNS(View.SvgNameSpace, 'svg')
         this.mainSvgDom.setAttributeNS(null, 'width',  `${(8 * this.fieldLength) + (2 * this.labelLength)}px`)
@@ -127,7 +128,9 @@ export default class BoardView extends View {
     }
 
     RenderFigures() {
-        this._figures.forEach((figureView, index) => {
+        this.models.figures.forEach((figure, index) => {
+            const figureView = new FigureView(figure)
+            this._figureViews.push(figureView)
             figureView.Render()
         });
     }

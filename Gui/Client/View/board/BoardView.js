@@ -24,44 +24,7 @@ export default class BoardView extends View {
     fieldLength = 100
     labelLength = 50
 
-    fields = []
-    _figureViews = [
-        new RookBlackView  ([0, 7], this),
-        new KnightBlackView([1, 7], this),
-        new BishopBlackView([2, 7], this),
-        new QueenBlackView ([3, 7], this),
-        new KingBlackView  ([4, 7], this),
-        new BishopBlackView([5, 7], this),
-        new KnightBlackView([6, 7], this),
-        new RookBlackView  ([7, 7], this),
-
-        new PawnBlackView  ([0, 6], this),
-        new PawnBlackView  ([1, 6], this),
-        new PawnBlackView  ([2, 6], this),
-        new PawnBlackView  ([3, 6], this),
-        new PawnBlackView  ([4, 6], this),
-        new PawnBlackView  ([5, 6], this),
-        new PawnBlackView  ([6, 6], this),
-        new PawnBlackView  ([7, 6], this),
-
-        new RookWhiteView  ([0, 0], this),
-        new KnightWhiteView([1, 0], this),
-        new BishopWhiteView([2, 0], this),
-        new QueenWhiteView ([3, 0], this),
-        new KingWhiteView  ([4, 0], this),
-        new BishopWhiteView([5, 0], this),
-        new KnightWhiteView([6, 0], this),
-        new RookWhiteView  ([7, 0], this),
-        
-        new PawnWhiteView  ([0, 1], this),
-        new PawnWhiteView  ([1, 1], this),
-        new PawnWhiteView  ([2, 1], this),
-        new PawnWhiteView  ([3, 1], this),
-        new PawnWhiteView  ([4, 1], this),
-        new PawnWhiteView  ([5, 1], this),
-        new PawnWhiteView  ([6, 1], this),
-        new PawnWhiteView  ([7, 1], this),
-    ]
+    fieldViews = []
     
     constructor(containerDom, model) {
         super()
@@ -112,16 +75,16 @@ export default class BoardView extends View {
     }
 
     RenderMainBoard() {
-        this.fields = []
+        this.fieldViews = []
 
         for (let x = 0; x < 8; x++) {
-            this.fields[x] = []
+            this.fieldViews[x] = []
 
             for (let y = 0; y < 8; y++) {
                 const position = [x, y];
                 const field = new FieldView(position, this)
 
-                this.fields[x][y] = field
+                this.fieldViews[x][y] = field
 
                 field.Render()
             }
@@ -131,7 +94,6 @@ export default class BoardView extends View {
     RenderFigures() {
         this.model.figures.forEach((figure, index) => {
             const figureView = new FigureView(figure, this)
-            this._figureViews.push(figureView)
             figureView.Render()
         });
     }

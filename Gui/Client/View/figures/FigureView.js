@@ -49,7 +49,7 @@ export default class FigureView extends View {
 			this.figure.position = optionalNewPosition
 		}
 
-		const field = this._boardView.fields[this.figure.position.x][this.figure.position.y]
+		const field = this._boardView.fieldViews[this.figure.position.x][this.figure.position.y]
 
 		field.addFigure(this)
 	}

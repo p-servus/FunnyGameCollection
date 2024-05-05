@@ -9,14 +9,6 @@ export default class FigureImages {
     }
 }
 
-FigureImages.images[FigureColor.Black] = []
-FigureImages.images[FigureColor.Black][FigureType.Rook] = '♜'
-FigureImages.images[FigureColor.Black][FigureType.Knight] = '♞'
-FigureImages.images[FigureColor.Black][FigureType.Bishop] = '♝'
-FigureImages.images[FigureColor.Black][FigureType.Queen] = '♛'
-FigureImages.images[FigureColor.Black][FigureType.King] = '♚'
-FigureImages.images[FigureColor.Black][FigureType.Pawn] = '♟️'
-
 FigureImages.images[FigureColor.White] = []
 FigureImages.images[FigureColor.White][FigureType.Rook] = '♖'
 FigureImages.images[FigureColor.White][FigureType.Knight] = '♘'
@@ -25,3 +17,10 @@ FigureImages.images[FigureColor.White][FigureType.Queen] = '♕'
 FigureImages.images[FigureColor.White][FigureType.King] = '♔'
 FigureImages.images[FigureColor.White][FigureType.Pawn] = '♙'
 
+FigureImages.images[FigureColor.Black] = []
+FigureImages.images[FigureColor.Black][FigureType.Rook] = '♜'
+FigureImages.images[FigureColor.Black][FigureType.Knight] = '♞'
+FigureImages.images[FigureColor.Black][FigureType.Bishop] = '♝'
+FigureImages.images[FigureColor.Black][FigureType.Queen] = '♛'
+FigureImages.images[FigureColor.Black][FigureType.King] = '♚'
+FigureImages.images[FigureColor.Black][FigureType.Pawn] = '♟️'

@@ -1,4 +1,6 @@
+import FigureColor from "../../Model/FigureColor.js"
 import FigureImages from "../../Model/FigureImages.js"
+import FigureType from "../../Model/FigureType.js"
 import View from "../View.js"
 
 export default class FigureView extends View {
@@ -24,8 +26,11 @@ export default class FigureView extends View {
 
 		const textDom = document.createElementNS(View.SvgNameSpace, 'text')
 
-		if(this.cssClass) {
-			textDom.classList.add(this.cssClass)
+		if(this.figure.color === FigureColor.White) {
+			textDom.classList.add('whiteFigure')
+		}
+		if(this.figure.color === FigureColor.Black) {
+			textDom.classList.add('blackFigure')
 		}
 
 		textDom.setAttributeNS(null, 'text-anchor', 'middle')

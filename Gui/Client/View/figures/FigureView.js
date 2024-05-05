@@ -1,20 +1,20 @@
+import FigureImages from "../../Model/FigureImages.js"
 import View from "../View.js"
 
 export default class FigureView extends View {
-	asciiCharacter = '?'
 	cssClass = null
-	position = null
+	figure = null
 	_boardView = null
 
-	constructor(position, boardView) {
+	constructor(figure, boardView) {
 		super()
 
-		this.position = position
+		this.figure = figure
 		this._boardView = boardView
 	}
 	
 	Render() {
-		if(this.position === null) {
+		if(this.figure.position === null) {
 			throw new Error('No Position Is Set!')
 		}
 
@@ -34,7 +34,10 @@ export default class FigureView extends View {
 		textDom.setAttributeNS(null, 'x', `${0.5 * fieldLength}px`)
 		textDom.setAttributeNS(null, 'y', `${0.5 * fieldLength}px`)
 
-		textDom.textContent = this.asciiCharacter
+		textDom.textContent = FigureImages.get(
+			this.figure.color,
+			this.figure.type,
+		)
 		mainSvgDom.appendChild(textDom)
 
 		this.dom = textDom
@@ -43,10 +46,10 @@ export default class FigureView extends View {
 
 	setPosition(optionalNewPosition = null) {
 		if(optionalNewPosition !== null) {
-			this.position = optionalNewPosition
+			this.figure.position = optionalNewPosition
 		}
 
-		const field = this._boardView.fields[this.position[0]][this.position[1]]
+		const field = this._boardView.fields[this.figure.position.x][this.figure.position.y]
 
 		field.addFigure(this)
 	}

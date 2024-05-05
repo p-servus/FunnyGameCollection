@@ -1,8 +1,9 @@
 export default class FigureType {
-    Queen = 0
-    King = 1
-    Rook = 2
-    Knight = 3
-    Bishop = 4
-    Pawn = 5
+    static Unknown = -1
+    static Queen = 0
+    static King = 1
+    static Rook = 2
+    static Knight = 3
+    static Bishop = 4
+    static Pawn = 5
 }

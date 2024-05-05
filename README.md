@@ -12,6 +12,8 @@ A funny game collection!!!!11!!!
   - Utilities
   - Rule-Logic
 
+**See also:** /Doc/Structure.drawio
+
 ## TODOs:
 
 -  [ ] cleaning BoardView (because much of constants are hard coded)

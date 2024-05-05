@@ -12,6 +12,7 @@ import PawnBlackView from "../figures/figures/PawnBlackView.js"
 import PawnWhiteView from "../figures/figures/PawnWhiteView.js"
 import View from "../View.js"
 import FieldView from "./FieldView.js"
+import FigureView from "../figures/FigureView.js"
 
 export default class BoardView extends View {
     static labelsByDimension = [
@@ -128,8 +129,8 @@ export default class BoardView extends View {
     }
 
     RenderFigures() {
-        this.models.figures.forEach((figure, index) => {
-            const figureView = new FigureView(figure)
+        this.model.figures.forEach((figure, index) => {
+            const figureView = new FigureView(figure, this)
             this._figureViews.push(figureView)
             figureView.Render()
         });

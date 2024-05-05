@@ -1,4 +1,5 @@
-export class FigureColor {
-    White = 0
-    Black = 1
+export default class FigureColor {
+    static Unknown = -1
+    static White = 0
+    static Black = 1
 }

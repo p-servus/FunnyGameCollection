@@ -1,10 +1,8 @@
 import FigureColor from "../../Model/FigureColor.js"
 import FigureImages from "../../Model/FigureImages.js"
-import FigureType from "../../Model/FigureType.js"
 import View from "../View.js"
 
 export default class FigureView extends View {
-	cssClass = null
 	figure = null
 	_boardView = null
 

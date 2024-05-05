@@ -2,7 +2,6 @@ import View from "../View.js"
 
 export default class FieldView extends View {
 	asciiCharacter = '?'
-	cssClass = null
 	position = null
     _boardView = null
 

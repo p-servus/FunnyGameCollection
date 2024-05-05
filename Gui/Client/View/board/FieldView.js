@@ -22,7 +22,7 @@ export default class FieldView extends View {
 
 		const field = document.createElementNS(View.SvgNameSpace, 'g')
 		field.classList.add('field')
-		field.setAttributeNS(null, 'transform', `translate(${x * fieldLength + labelLength} ${y * fieldLength + labelLength})`)
+		field.setAttributeNS(null, 'transform', `translate(${x * fieldLength + labelLength} ${(7 - y) * fieldLength + labelLength})`)
 
 		const rect = document.createElementNS(View.SvgNameSpace, 'rect')
 		rect.setAttributeNS(null, 'width', `${fieldLength}px`)

@@ -66,7 +66,7 @@ export default class BoardView extends View {
 
             if(dimension == 1) {
                 textDom.setAttributeNS(null, 'x', `${0.5 * this.labelLength}px`)
-                textDom.setAttributeNS(null, 'y', `${index * this.fieldLength + this.labelLength + (0.5 * this.fieldLength)}px`)
+                textDom.setAttributeNS(null, 'y', `${(7 - index) * this.fieldLength + this.labelLength + (0.5 * this.fieldLength)}px`)
             }
 
             textDom.textContent = BoardView.labelsByDimension[dimension][index]

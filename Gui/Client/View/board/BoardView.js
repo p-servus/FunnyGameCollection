@@ -61,7 +61,7 @@ export default class BoardView extends View {
 
             if(dimension == 0) {
                 textDom.setAttributeNS(null, 'x', `${index * this.fieldLength + this.labelLength + (0.5 * this.fieldLength)}px`)
-                textDom.setAttributeNS(null, 'y', `${0.5 * this.labelLength}px`)
+                textDom.setAttributeNS(null, 'y', `${(8) * this.fieldLength + (1.5 * this.labelLength)}px`)
             }
 
             if(dimension == 1) {

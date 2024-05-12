@@ -4,11 +4,9 @@ import FigureType from "./FigureType.js"
 export default class Figure {
 	color = FigureColor.Unknown
 	type = FigureType.Unknown
-	position = null
 
-	constructor(color, type, position) {
+	constructor(color, type) {
 		this.color = color
 		this.type = type
-		this.position = position
 	}
 }

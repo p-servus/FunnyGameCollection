@@ -1,6 +1,7 @@
 import FigureColor from "../../Model/FigureColor.js"
 import FigureImages from "../FigureImages.js"
 import View from "../View.js"
+import FigurePosition from "../../Model/FigurePosition.js";
 
 export default class FigureView extends View {
 	figure = null
@@ -13,11 +14,11 @@ export default class FigureView extends View {
 		this._boardView = boardView
 	}
 	
-	Render() {
-		if(this.figure.position === null) {
-			throw new Error('No Position Is Set!')
-		}
-
+	/**
+	 * 
+	 * @param {FigurePosition} figurePosition 
+	 */
+	Render(figurePosition) {
 		const mainSvgDom = this._boardView.mainSvgDom;
 		const fieldLength = this._boardView.fieldLength;
 		const labelLength = this._boardView.labelLength;
@@ -44,15 +45,15 @@ export default class FigureView extends View {
 		mainSvgDom.appendChild(textDom)
 
 		this.dom = textDom
-		this.setPosition()
+		this.setPosition(figurePosition)
 	}
 
-	setPosition(optionalNewPosition = null) {
-		if(optionalNewPosition !== null) {
-			this.figure.position = optionalNewPosition
-		}
-
-		const field = this._boardView.fieldViews[this.figure.position.x][this.figure.position.y]
+	/**
+	 * 
+	 * @param {FigurePosition} figurePosition 
+	 */
+	setPosition(figurePosition) {
+		const field = this._boardView.fieldViews[figurePosition.columnIndex][figurePosition.rowIndex]
 
 		field.addFigure(this)
 	}

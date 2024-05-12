@@ -1,6 +1,7 @@
 import View from "../View.js"
 import FieldView from "./FieldView.js"
 import FigureView from "../figures/FigureView.js"
+import FigurePosition from "../../Model/FigurePosition.js"
 
 export default class BoardView extends View {
     static labelsByDimension = [
@@ -80,9 +81,13 @@ export default class BoardView extends View {
     }
 
     RenderFigures() {
-        this.model.figures.forEach((figure, index) => {
-            const figureView = new FigureView(figure, this)
-            figureView.Render()
-        });
+        this.model.fields.forEach((column, columnIndex) => {
+            column.forEach((field, rowIndex) => {
+                if (field.figure) {
+                    const figureView = new FigureView(field.figure, this)
+                    figureView.Render(FigurePosition.FromIndexes(columnIndex, rowIndex))
+                }
+            });
+        })
     }
 }

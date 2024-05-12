@@ -30,8 +30,6 @@ export default class BoardView extends View {
         this.RenderLabelsInX()
         this.RenderLabelsInY()
         this.RenderMainBoard()
-
-        this.RenderFigures()
     }
 
     RenderLabelsInX() {
@@ -64,28 +62,18 @@ export default class BoardView extends View {
     }
 
     RenderMainBoard() {
-        this.fieldViews = []
-
-        for (let x = 0; x < 8; x++) {
-            this.fieldViews[x] = []
-
-            for (let y = 0; y < 8; y++) {
-                const position = [x, y];
-                const field = new FieldView(position, this)
-
-                this.fieldViews[x][y] = field
-
-                field.Render()
-            }
-        }
-    }
-
-    RenderFigures() {
         this.model.fields.forEach((column, columnIndex) => {
+            this.fieldViews[columnIndex] = []
+
             column.forEach((field, rowIndex) => {
+                const position = FigurePosition.FromIndexes(columnIndex, rowIndex)
+                const fieldView = new FieldView(position, this)
+                this.fieldViews[columnIndex][rowIndex] = fieldView
+                fieldView.Render()
+
                 if (field.figure) {
                     const figureView = new FigureView(field.figure, this)
-                    figureView.Render(FigurePosition.FromIndexes(columnIndex, rowIndex))
+                    figureView.Render(position)
                 }
             });
         })

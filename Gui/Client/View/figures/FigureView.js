@@ -1,7 +1,7 @@
 import FigureColor from "../../Model/FigureColor.js"
 import FigureImages from "../FigureImages.js"
 import View from "../View.js"
-import FigurePosition from "../../Model/FigurePosition.js";
+import FieldPosition from "../../Model/FieldPosition.js";
 
 export default class FigureView extends View {
 	figure = null
@@ -16,7 +16,7 @@ export default class FigureView extends View {
 	
 	/**
 	 * 
-	 * @param {FigurePosition} figurePosition 
+	 * @param {FieldPosition} figurePosition 
 	 */
 	Render(figurePosition) {
 		const mainSvgDom = this._boardView.mainSvgDom;
@@ -50,7 +50,7 @@ export default class FigureView extends View {
 
 	/**
 	 * 
-	 * @param {FigurePosition} figurePosition 
+	 * @param {FieldPosition} figurePosition 
 	 */
 	setPosition(figurePosition) {
 		const field = this._boardView.fieldViews[figurePosition.columnIndex][figurePosition.rowIndex]

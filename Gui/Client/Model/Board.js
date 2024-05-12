@@ -1,6 +1,6 @@
 import Figure from "./Figure.js";
 import FigureColor from "./FigureColor.js";
-import FigurePosition from "./FigurePosition.js";
+import FigurePosition from "./FieldPosition.js";
 import FigureType from "./FigureType.js";
 import Field from "./Field.js";
 

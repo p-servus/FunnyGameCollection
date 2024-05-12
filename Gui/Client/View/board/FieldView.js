@@ -1,10 +1,10 @@
-import FigurePosition from "../../Model/FigurePosition.js"
+import FieldPosition from "../../Model/FieldPosition.js"
 import View from "../View.js"
 
 export default class FieldView extends View {
 	asciiCharacter = '?'
 	/**
-	 * @type {FigurePosition}
+	 * @type {FieldPosition}
 	 */
 	position = null
     _boardView = null
@@ -20,7 +20,7 @@ export default class FieldView extends View {
 		const fieldLength = this._boardView.fieldLength;
 		const labelLength = this._boardView.labelLength;
 		const mainSvgDom = this._boardView.mainSvgDom;
-		
+
 		const columnIndex = this.position.columnIndex
 		const rowIndex = this.position.rowIndex
 

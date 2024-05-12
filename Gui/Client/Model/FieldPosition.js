@@ -1,4 +1,4 @@
-export default class FigurePosition {
+export default class FieldPosition {
 	static xChars = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
 	static yChars = ['1', '2', '3', '4', '5', '6', '7', '8']
 
@@ -6,20 +6,20 @@ export default class FigurePosition {
 	rowIndex = null
 
 	get xChar() {
-		return FigurePosition.xChars[this.columnIndex]
+		return FieldPosition.xChars[this.columnIndex]
 	}
 	set xChar(value) {
 		this.columnIndex = value !== null
-			? FigurePosition.xChars.indexOf(value)
+			? FieldPosition.xChars.indexOf(value)
 			: null
 	}
 
 	get yChar() {
-		return FigurePosition.yChars[this.rowIndex]
+		return FieldPosition.yChars[this.rowIndex]
 	}
 	set yChar(value) {
 		this.rowIndex = value !== null
-			? FigurePosition.yChars.indexOf(value)
+			? FieldPosition.yChars.indexOf(value)
 			: null
 	}
 
@@ -29,7 +29,7 @@ export default class FigurePosition {
 	}
 
 	static FromIndexes(columnIndex, rowIndex) {
-		const figurePosition = new FigurePosition()
+		const figurePosition = new FieldPosition()
 		figurePosition.columnIndex = columnIndex
 		figurePosition.rowIndex = rowIndex
 		return figurePosition

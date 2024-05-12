@@ -1,5 +1,5 @@
-import FigureColor from "./FigureColor.js"
-import FigureType from "./FigureType.js"
+import FigureColor from "../Model/FigureColor.js"
+import FigureType from "../Model/FigureType.js"
 
 export default class FigureImages {
     static images = []

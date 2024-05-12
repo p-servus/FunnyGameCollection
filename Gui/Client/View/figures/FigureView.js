@@ -1,5 +1,5 @@
 import FigureColor from "../../Model/FigureColor.js"
-import FigureImages from "../../Model/FigureImages.js"
+import FigureImages from "../FigureImages.js"
 import View from "../View.js"
 
 export default class FigureView extends View {

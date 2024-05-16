@@ -14,11 +14,42 @@ export default class BoardView extends View {
     labelLength = 50
 
     fieldViews = []
+
+    _boardModel = null
+
+    /**
+     * @type {FieldPosition | null}
+     */
+    _startSelection = null
+    /**
+     * @type {FieldPosition | null}
+     */
+    _targetSelection = null
+
+    /**
+     * @param {FieldPosition} position 
+     */
+    trySelectField(position) {
+        if(this._startSelection === null) {
+            this._startSelection = position
+            return true
+        }
+
+        if(this._targetSelection === null) {
+            this._targetSelection = position
+
+            const moveSuccess = this._boardModel.tryMove()
+
+            return moveSuccess
+        }
+
+        return false
+    }
     
-    constructor(containerDom, model) {
+    constructor(containerDom, boardModel) {
         super()
         this.containerDom = containerDom
-        this.model = model
+        this._boardModel = boardModel
 
         this.mainSvgDom = document.createElementNS(View.SvgNameSpace, 'svg')
         this.mainSvgDom.setAttributeNS(null, 'width',  `${(8 * this.fieldLength) + (2 * this.labelLength)}px`)
@@ -62,12 +93,12 @@ export default class BoardView extends View {
     }
 
     RenderMainBoard() {
-        this.model.fields.forEach((column, columnIndex) => {
+        this._boardModel.fields.forEach((column, columnIndex) => {
             this.fieldViews[columnIndex] = []
 
             column.forEach((field, rowIndex) => {
                 const position = FieldPosition.FromIndexes(columnIndex, rowIndex)
-                const fieldView = new FieldView(position, this)
+                const fieldView = new FieldView(position, this, this._boardModel)
                 this.fieldViews[columnIndex][rowIndex] = fieldView
                 fieldView.Render()
 

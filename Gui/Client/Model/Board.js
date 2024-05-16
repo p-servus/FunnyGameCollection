@@ -3,9 +3,14 @@ import FigureColor from "./FigureColor.js";
 import FigurePosition from "./FieldPosition.js";
 import FigureType from "./FigureType.js";
 import Field from "./Field.js";
+import FieldPosition from "./FieldPosition.js";
 
 export default class Board {
     fields
+
+    tryMove() {
+
+    }
 
     constructor() {
         this.fields = []

@@ -1,3 +1,4 @@
+import Board from "../../Model/Board.js"
 import FieldPosition from "../../Model/FieldPosition.js"
 import View from "../View.js"
 
@@ -7,13 +8,20 @@ export default class FieldView extends View {
 	 * @type {FieldPosition}
 	 */
 	position = null
-    _boardView = null
+	_boardView = null
 
-	constructor(position, boardView) {
+	/**
+	 * @type {Board}
+	 */
+	_boardModel
+
+	constructor(position, boardView, boardModel) {
 		super()
 
 		this.position = position
 		this._boardView = boardView
+
+		this._boardModel = boardModel
 	}
 	
 	Render() {
@@ -39,8 +47,18 @@ export default class FieldView extends View {
 		rect.classList.add(cssFieldClass)
 
 		field.addEventListener('click', () => {
-			console.log('Bla = D', columnIndex, rowIndex)
-			field.classList.toggle('selected')
+			const success = this._boardView.trySelectField(this.position)
+
+			if(success) {
+				field.classList.add('selected')
+
+
+				if(isTargetSelected) {
+					//TODO: move FigureView
+				}
+			}
+
+			// The field-DOM has to be appended / prepended, to handle the order of the DOM-Elements. 
 			if (field.classList.contains('selected')) {
 				mainSvgDom.appendChild(field)
 			}

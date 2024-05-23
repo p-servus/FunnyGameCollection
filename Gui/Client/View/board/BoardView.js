@@ -31,27 +31,55 @@ export default class BoardView extends View {
      */
     selectField(position) {
         if(this._startSelection === null) {
+            const startFieldView = this.getFieldView(position)
+            
+            if(startFieldView.figureView === null) {
+                return
+            }
+
             this._startSelection = position
 
-            const startFieldView = this.getFieldView(position)
             startFieldView.select()
         }
         else if(this._targetSelection === null) {
             this._targetSelection = position
 
-            const targetFieldView = this.getFieldView(position)
-            targetFieldView.select()
-
-            const moveSuccess = this._boardModel.tryMove(
+            const moveState = this._boardModel.move(
                 this._startSelection,
                 this._targetSelection,
             )
-            //TODO: if(moveSuccess)
+            
+            if(moveState.success) {
+                const startFieldView = this.getFieldView(this._startSelection)
+                const targetFieldView = this.getFieldView(this._targetSelection)
+
+                targetFieldView.select()
+
+                if(moveState.throw) {
+                    const targetFigureView = targetFieldView.figureView
+                    targetFigureView.removeFrom(
+                        this._targetSelection,
+                    )
+                }
+
+                const startFigureView = startFieldView.figureView
+                startFigureView.moveFromTo(
+                    this._startSelection,
+                    this._targetSelection,
+                )
+
+                this._startSelection = null
+                this._targetSelection = null
+
+                startFieldView.unselect()
+                targetFieldView.unselect()
+            }
         }
     }
 
     /**
      * @param {FieldPosition} position 
+     * @returns {FieldView}
      */
     getFieldView(position) {
         const fieldView = this.fieldViews[position.columnIndex][position.rowIndex]

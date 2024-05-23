@@ -8,14 +8,6 @@ import FieldPosition from "./FieldPosition.js";
 export default class Board {
     fields
 
-    /**
-     * @param {FieldPosition} startPosition 
-     * @param {FieldPosition} targetPosition 
-     */
-    tryMove(startPosition, targetPosition) {
-        //TODO: Implement me!!!
-    }
-
     constructor() {
         this.fields = []
 
@@ -63,6 +55,18 @@ export default class Board {
         this.setFigure(new Figure(FigureColor.Black, FigureType.Bishop), new FigurePosition('F', '8'))
         this.setFigure(new Figure(FigureColor.Black, FigureType.Knight), new FigurePosition('G', '8'))
         this.setFigure(new Figure(FigureColor.Black, FigureType.Rook)  , new FigurePosition('H', '8'))
+    }
+
+    /**
+     * @param {FieldPosition} startPosition 
+     * @param {FieldPosition} targetPosition 
+     */
+    move(startPosition, targetPosition) {
+        //TODO: startPosition is unused!?
+        return {
+            success: true,
+            throw: this.fields[targetPosition.columnIndex][targetPosition.rowIndex].figure !== null,
+        }
     }
 
 	/**

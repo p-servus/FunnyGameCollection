@@ -1,6 +1,7 @@
 import Board from "../../Model/Board.js"
 import FieldPosition from "../../Model/FieldPosition.js"
 import View from "../View.js"
+import FigureView from "../figures/FigureView.js"
 
 export default class FieldView extends View {
 	asciiCharacter = '?'
@@ -19,6 +20,11 @@ export default class FieldView extends View {
 	 * @type {Element}
 	 */
 	_dom = null
+
+	/**
+	 * @type {FigureView}
+	 */
+	figureView = null
 
 	constructor(position, boardView, boardModel) {
 		super()
@@ -61,16 +67,30 @@ export default class FieldView extends View {
 	select() {
 		this._dom.classList.add('selected')
 
-		// The field-DOM has to be appended / prepended, to handle the order of the DOM-Elements. 
-		if (this._dom.classList.contains('selected')) {
-			this._boardView.mainSvgDom.appendChild(this._dom)
-		}
-		else {
-			this._boardView.mainSvgDom.prepend(this._dom)
-		}
+		// The field-DOM has to be appended, to move the Field-DOM-Element to the foreground.
+		this._boardView.mainSvgDom.appendChild(this._dom)
 	}
 
-	addFigure(figure) {
-		this._dom.appendChild(figure.dom)
+	unselect() {
+		this._dom.classList.remove('selected')
+
+		// The field-DOM has to be prepended, to move the Field-DOM-Element to the background.
+		this._boardView.mainSvgDom.prepend(this._dom)
+	}
+
+	addFigureView(figureView) {
+		if(this.figureView !== null) {
+			throw 'Failed to add FigureView: There is already an other FigureView on this FieldView!'
+		}
+
+		this.figureView = figureView
+		
+		this._dom.appendChild(this.figureView.dom)
+	}
+
+	removeFigureView() {
+		this._dom.removeChild(this.figureView.dom)
+
+		this.figureView = null
 	}
 }

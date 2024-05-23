@@ -45,16 +45,36 @@ export default class FigureView extends View {
 		mainSvgDom.appendChild(textDom)
 
 		this.dom = textDom
-		this.setPosition(figurePosition)
+		this.setTo(figurePosition)
 	}
 
 	/**
 	 * 
 	 * @param {FieldPosition} figurePosition 
 	 */
-	setPosition(figurePosition) {
-		const field = this._boardView.fieldViews[figurePosition.columnIndex][figurePosition.rowIndex]
+	setTo(figurePosition) {
+		const fieldView = this._boardView.fieldViews[figurePosition.columnIndex][figurePosition.rowIndex]
 
-		field.addFigure(this)
+		fieldView.addFigureView(this)
+	}
+
+	/**
+	 * 
+	 * @param {FieldPosition} figurePosition 
+	 */
+	removeFrom(figurePosition) {
+		const fieldView = this._boardView.fieldViews[figurePosition.columnIndex][figurePosition.rowIndex]
+
+		fieldView.removeFigureView()
+	}
+
+	/**
+	 * 
+	 * @param {FieldPosition} startPosition 
+	 * @param {FieldPosition} targetPosition 
+	 */
+	moveFromTo(startPosition, targetPosition) {
+		this.removeFrom(startPosition)
+		this.setTo(targetPosition)
 	}
 }

@@ -8,8 +8,12 @@ import FieldPosition from "./FieldPosition.js";
 export default class Board {
     fields
 
-    tryMove() {
-
+    /**
+     * @param {FieldPosition} startPosition 
+     * @param {FieldPosition} targetPosition 
+     */
+    tryMove(startPosition, targetPosition) {
+        //TODO: Implement me!!!
     }
 
     constructor() {

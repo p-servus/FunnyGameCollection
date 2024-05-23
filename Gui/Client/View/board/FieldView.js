@@ -15,6 +15,11 @@ export default class FieldView extends View {
 	 */
 	_boardModel
 
+	/**
+	 * @type {Element}
+	 */
+	_dom = null
+
 	constructor(position, boardView, boardModel) {
 		super()
 
@@ -27,14 +32,13 @@ export default class FieldView extends View {
 	Render() {
 		const fieldLength = this._boardView.fieldLength;
 		const labelLength = this._boardView.labelLength;
-		const mainSvgDom = this._boardView.mainSvgDom;
 
 		const columnIndex = this.position.columnIndex
 		const rowIndex = this.position.rowIndex
 
-		const field = document.createElementNS(View.SvgNameSpace, 'g')
-		field.classList.add('field')
-		field.setAttributeNS(null, 'transform', `translate(${columnIndex * fieldLength + labelLength} ${(7 - rowIndex) * fieldLength + labelLength})`)
+		this._dom = document.createElementNS(View.SvgNameSpace, 'g')
+		this._dom.classList.add('field')
+		this._dom.setAttributeNS(null, 'transform', `translate(${columnIndex * fieldLength + labelLength} ${(7 - rowIndex) * fieldLength + labelLength})`)
 
 		const rect = document.createElementNS(View.SvgNameSpace, 'rect')
 		rect.setAttributeNS(null, 'width', `${fieldLength}px`)
@@ -46,34 +50,27 @@ export default class FieldView extends View {
 
 		rect.classList.add(cssFieldClass)
 
-		field.addEventListener('click', () => {
-			const success = this._boardView.trySelectField(this.position)
-
-			if(success) {
-				field.classList.add('selected')
-
-
-				if(isTargetSelected) {
-					//TODO: move FigureView
-				}
-			}
-
-			// The field-DOM has to be appended / prepended, to handle the order of the DOM-Elements. 
-			if (field.classList.contains('selected')) {
-				mainSvgDom.appendChild(field)
-			}
-			else {
-				mainSvgDom.prepend(field)
-			}
+		this._dom.addEventListener('click', () => {
+			this._boardView.selectField(this.position)
 		})
 
-		field.appendChild(rect)
-		mainSvgDom.appendChild(field)
+		this._dom.appendChild(rect)
+		this._boardView.mainSvgDom.appendChild(this._dom)
+	}
 
-		this.dom = field
+	select() {
+		this._dom.classList.add('selected')
+
+		// The field-DOM has to be appended / prepended, to handle the order of the DOM-Elements. 
+		if (this._dom.classList.contains('selected')) {
+			this._boardView.mainSvgDom.appendChild(this._dom)
+		}
+		else {
+			this._boardView.mainSvgDom.prepend(this._dom)
+		}
 	}
 
 	addFigure(figure) {
-		this.dom.appendChild(figure.dom)
+		this._dom.appendChild(figure.dom)
 	}
 }

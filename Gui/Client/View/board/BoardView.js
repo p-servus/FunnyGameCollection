@@ -29,21 +29,33 @@ export default class BoardView extends View {
     /**
      * @param {FieldPosition} position 
      */
-    trySelectField(position) {
+    selectField(position) {
         if(this._startSelection === null) {
             this._startSelection = position
-            return true
-        }
 
-        if(this._targetSelection === null) {
+            const startFieldView = this.getFieldView(position)
+            startFieldView.select()
+        }
+        else if(this._targetSelection === null) {
             this._targetSelection = position
 
-            const moveSuccess = this._boardModel.tryMove()
+            const targetFieldView = this.getFieldView(position)
+            targetFieldView.select()
 
-            return moveSuccess
+            const moveSuccess = this._boardModel.tryMove(
+                this._startSelection,
+                this._targetSelection,
+            )
+            //TODO: if(moveSuccess)
         }
+    }
 
-        return false
+    /**
+     * @param {FieldPosition} position 
+     */
+    getFieldView(position) {
+        const fieldView = this.fieldViews[position.columnIndex][position.rowIndex]
+        return fieldView
     }
     
     constructor(containerDom, boardModel) {

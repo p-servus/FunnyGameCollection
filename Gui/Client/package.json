@@ -15,9 +15,7 @@
   },
   "homepage": "https://github.com/p-servus/FunnyGameCollection#readme",
   "devDependencies": {
-    "@eslint/js": "^9.4.0",
     "eslint": "^9.4.0",
-    "eslint-plugin-jsdoc": "^48.2.12",
-    "globals": "^15.4.0"
+    "eslint-plugin-jsdoc": "^48.2.12"
   }
 }

@@ -1,13 +1,6 @@
-// import globals from "globals";
-// import pluginJs from "@eslint/js";
-import jsdoc from 'eslint-plugin-jsdoc';
-
+import jsdoc from 'eslint-plugin-jsdoc'
 
 export default [
-  // {
-  //   languageOptions: {globals: globals.browser },
-  // },
-  // pluginJs.configs.recommended,
   {
     plugins: {
       jsdoc,
@@ -31,4 +24,4 @@ export default [
       'jsdoc/require-description': "error",
     }
   }
-];
+]

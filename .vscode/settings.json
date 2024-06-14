@@ -4,5 +4,6 @@
           "directory": "./Gui/Client/",
           "changeProcessCWD": true
         }
-    ]
+    ],
+    "eslint.run": "onType"
 }

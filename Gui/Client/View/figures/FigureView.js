@@ -1,7 +1,6 @@
 import FigureColor from "../../Model/FigureColor.js"
 import FigureImages from "../FigureImages.js"
 import View from "../View.js"
-import FieldPosition from "../../Model/FieldPosition.js";
 
 export default class FigureView extends View {
 	figure = null
@@ -19,9 +18,8 @@ export default class FigureView extends View {
 	 * @param {FieldPosition} figurePosition 
 	 */
 	Render(figurePosition) {
-		const mainSvgDom = this._boardView.mainSvgDom;
-		const fieldLength = this._boardView.fieldLength;
-		const labelLength = this._boardView.labelLength;
+		const mainSvgDom = this._boardView.mainSvgDom
+		const fieldLength = this._boardView.fieldLength
 
 		const textDom = document.createElementNS(View.SvgNameSpace, 'text')
 

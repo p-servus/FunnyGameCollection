@@ -1,7 +1,4 @@
-import Board from "../../Model/Board.js"
-import FieldPosition from "../../Model/FieldPosition.js"
 import View from "../View.js"
-import FigureView from "../figures/FigureView.js"
 
 export default class FieldView extends View {
 	asciiCharacter = '?'
@@ -36,8 +33,8 @@ export default class FieldView extends View {
 	}
 	
 	Render() {
-		const fieldLength = this._boardView.fieldLength;
-		const labelLength = this._boardView.labelLength;
+		const fieldLength = this._boardView.fieldLength
+		const labelLength = this._boardView.labelLength
 
 		const columnIndex = this.position.columnIndex
 		const rowIndex = this.position.rowIndex

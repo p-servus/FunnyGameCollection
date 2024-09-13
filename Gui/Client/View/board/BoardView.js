@@ -146,7 +146,7 @@ export default class BoardView extends View {
                     const figureView = new FigureView(field.figure, this)
                     figureView.Render(position)
                 }
-            });
+            })
         })
     }
 }

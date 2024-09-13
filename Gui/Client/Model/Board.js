@@ -4,6 +4,9 @@ import FieldPosition from "./FieldPosition.js"
 import FigureType from "./FigureType.js"
 import Field from "./Field.js"
 
+/**
+ * Model of the chess-board
+ */
 export default class Board {
     fields
 
@@ -57,10 +60,13 @@ export default class Board {
     }
 
     /**
-     * @param {FieldPosition} startPosition 
-     * @param {FieldPosition} targetPosition 
+     * Moves a figure from a start-position to a target-position
+     * @param {FieldPosition} startPosition start of the figure to move
+     * @param {FieldPosition} targetPosition target of the figure to move
+     * @returns {{success: boolean, throw: boolean}} state of the move of the figure. Includes the success of the move and indicates if an other figure is thrown
      */
     move(startPosition, targetPosition) {
+        //TODO: figure has to be moved 
         //TODO: startPosition is unused!?
         return {
             success: true,
@@ -69,9 +75,9 @@ export default class Board {
     }
 
 	/**
-	 *
-     * @param {Figure} figure 
-	 * @param {FieldPosition} position 
+	 * Set a figure to a target-position
+     * @param {Figure} figure - Figure to set
+	 * @param {FieldPosition} position - Target-position
 	 */
     setFigure(figure, position) {
         this.fields[position.columnIndex][position.rowIndex] = new Field(figure)

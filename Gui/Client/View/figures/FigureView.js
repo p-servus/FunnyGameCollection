@@ -1,11 +1,22 @@
-import FigureColor from "../../Model/FigureColor.js"
-import FigureImages from "../FigureImages.js"
-import View from "../View.js"
+import FieldPosition from '../../Model/FieldPosition.js'
+import Figure from '../../Model/Figure.js'
+import FigureColor from '../../Model/FigureColor.js'
+import BoardView from '../board/BoardView.js'
+import FigureImages from '../FigureImages.js'
+import View from '../View.js'
 
+/**
+ * The View for a chess figure.
+ */
 export default class FigureView extends View {
 	figure = null
 	_boardView = null
 
+	/**
+	 * Creates an instance of a FigureView.
+	 * @param {Figure} figure - The model of the figure.
+	 * @param {BoardView} boardView - The BoardView to place the figure on.
+	 */
 	constructor(figure, boardView) {
 		super()
 
@@ -14,8 +25,8 @@ export default class FigureView extends View {
 	}
 	
 	/**
-	 * 
-	 * @param {FieldPosition} figurePosition 
+	 * Renders the FigureView.
+	 * @param {FieldPosition} figurePosition - The position where to  place/render the FirureView.
 	 */
 	Render(figurePosition) {
 		const mainSvgDom = this._boardView.mainSvgDom
@@ -47,8 +58,8 @@ export default class FigureView extends View {
 	}
 
 	/**
-	 * 
-	 * @param {FieldPosition} figurePosition 
+	 * Sets the FigureView to a position on the chess board.
+	 * @param {FieldPosition} figurePosition - The Position where to move to.
 	 */
 	setTo(figurePosition) {
 		const fieldView = this._boardView.fieldViews[figurePosition.columnIndex][figurePosition.rowIndex]
@@ -57,8 +68,8 @@ export default class FigureView extends View {
 	}
 
 	/**
-	 * 
-	 * @param {FieldPosition} figurePosition 
+	 * Removes the FigureView from the chess board.
+	 * @param {FieldPosition} figurePosition - The position, where to fild the figure to remove (because the figure itself does not know its own position).
 	 */
 	removeFrom(figurePosition) {
 		const fieldView = this._boardView.fieldViews[figurePosition.columnIndex][figurePosition.rowIndex]
@@ -67,9 +78,9 @@ export default class FigureView extends View {
 	}
 
 	/**
-	 * 
-	 * @param {FieldPosition} startPosition 
-	 * @param {FieldPosition} targetPosition 
+	 * Moves the FigureView from its current position to an othe one.
+	 * @param {FieldPosition} startPosition - The current position of the figure (because the firgure does not know its own position).
+	 * @param {FieldPosition} targetPosition - The target position where to move the figure.
 	 */
 	moveFromTo(startPosition, targetPosition) {
 		this.removeFrom(startPosition)

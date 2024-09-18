@@ -1,4 +1,4 @@
-import Figure from "./Figure.js"
+import Figure from './Figure.js'
 
 
 /**

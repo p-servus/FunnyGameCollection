@@ -6,25 +6,25 @@ export default [
       jsdoc,
     },
     rules: {
-      "semi": ["error", "never"],
-      "no-unused-vars": "error",
-      "prefer-const": "error",
+      'semi': ['error', 'never'],
+      'no-unused-vars': 'error',
+      'prefer-const': 'error',
       
       'comma-dangle': ['error', 'always-multiline'],
       'quotes': ['error', 'single'],
       'no-var': 'error',
       
-      "jsdoc/require-jsdoc": [
-        "error",
+      'jsdoc/require-jsdoc': [
+        'error',
         {
-          "require": {
-              "FunctionDeclaration": true,
-              "MethodDefinition": true,
-              "ClassDeclaration": true,
-              "ArrowFunctionExpression": true,
-              "FunctionExpression": true
-          }
-        }
+          'require': {
+              'FunctionDeclaration': true,
+              'MethodDefinition': true,
+              'ClassDeclaration': true,
+              'ArrowFunctionExpression': true,
+              'FunctionExpression': true,
+          },
+        },
       ],
       'jsdoc/require-description': 'error',
       'jsdoc/require-param': 'error',
@@ -34,7 +34,7 @@ export default [
       'jsdoc/require-returns-type': 'error',
       'jsdoc/require-returns-description': 'error',
       'jsdoc/require-returns-check': 'error',
-      "jsdoc/no-undefined-types": 1, // to avoid 'is defined but never used' when importing types only for jsdoc-comments
-    }
-  }
+      'jsdoc/no-undefined-types': 1, // to avoid 'is defined but never used' when importing types only for jsdoc-comments
+    },
+  },
 ]

@@ -1,8 +1,8 @@
-import Figure from "./Figure.js"
-import FigureColor from "./FigureColor.js"
-import FieldPosition from "./FieldPosition.js"
-import FigureType from "./FigureType.js"
-import Field from "./Field.js"
+import Figure from './Figure.js'
+import FigureColor from './FigureColor.js'
+import FieldPosition from './FieldPosition.js'
+import FigureType from './FigureType.js'
+import Field from './Field.js'
 
 /**
  * Model of the chess-board
@@ -10,6 +10,9 @@ import Field from "./Field.js"
 export default class Board {
     fields
 
+    /**
+     * Creates an instance of an chess board.
+     */
     constructor() {
         this.fields = []
 

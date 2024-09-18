@@ -1,8 +1,12 @@
-import View from "../View.js"
-import FieldView from "./FieldView.js"
-import FigureView from "../figures/FigureView.js"
-import FieldPosition from "../../Model/FieldPosition.js"
+import View from '../View.js'
+import FieldView from './FieldView.js'
+import FigureView from '../figures/FigureView.js'
+import FieldPosition from '../../Model/FieldPosition.js'
+import Board from '../../Model/Board.js'
 
+/**
+ * The View of an chess board.
+ */
 export default class BoardView extends View {
     static labelsByDimension = [
         ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
@@ -27,7 +31,8 @@ export default class BoardView extends View {
     _targetSelection = null
 
     /**
-     * @param {FieldPosition} position 
+     * If the user clicks/selects a fielf on the chess board.
+     * @param {FieldPosition} position - The position of the selected field.
      */
     selectField(position) {
         if(this._startSelection === null) {
@@ -78,14 +83,21 @@ export default class BoardView extends View {
     }
 
     /**
-     * @param {FieldPosition} position 
-     * @returns {FieldView}
+     * Provides the FieldView of a given position.
+     * @param {FieldPosition} position - The position from where to get the FieldView.
+     * @returns {FieldView} The resulting FieldView.
      */
     getFieldView(position) {
         const fieldView = this.fieldViews[position.columnIndex][position.rowIndex]
         return fieldView
     }
     
+    
+    /**
+     * Creates an instance of a BoardView.
+     * @param {Element} containerDom - The DOM-Container for the chess board.
+     * @param {Board} boardModel - The model of the chess board.
+     */
     constructor(containerDom, boardModel) {
         super()
         this.containerDom = containerDom
@@ -97,20 +109,35 @@ export default class BoardView extends View {
         this.containerDom.appendChild(this.mainSvgDom)
     }
 
+    /**
+     * Renders the chess board.
+     */
     Render() {
         this.RenderLabelsInX()
         this.RenderLabelsInY()
         this.RenderMainBoard()
     }
 
+    /**
+     * Renders the horizontal label-letters of the chess board.
+     */
     RenderLabelsInX() {
         this.RenderLabelsInDimension(0)
     }
 
+    /**
+     * Renders the vertical label-numbers of the chess board.
+     */
     RenderLabelsInY() {
         this.RenderLabelsInDimension(1)
     }
 
+    /**
+     * Renders the horizontal or vertical label-letters / label-numbers of the chess board.
+     * @param {0|1} dimension - A number describing the dimesion for the labels-axis:
+     *      - 0 for the vertical x-axis with the label-letters
+     *      - 1 for the horizontal y-axis with the label-numbers
+     */
     RenderLabelsInDimension(dimension) {
         for(let index = 0; index < 8; index++) {
             const textDom = document.createElementNS(View.SvgNameSpace, 'text')
@@ -132,6 +159,9 @@ export default class BoardView extends View {
         }
     }
 
+    /**
+     * Renders the main part of the chess boald with its fields.
+     */
     RenderMainBoard() {
         this._boardModel.fields.forEach((column, columnIndex) => {
             this.fieldViews[columnIndex] = []

@@ -1,5 +1,12 @@
-import View from "../View.js"
+import Board from '../../Model/Board.js'
+import FieldPosition from '../../Model/FieldPosition.js'
+import FigureView from '../figures/FigureView.js'
+import View from '../View.js'
+import BoardView from './BoardView.js'
 
+/**
+ * The View of a field on a chess board.
+ */
 export default class FieldView extends View {
 	asciiCharacter = '?'
 	/**
@@ -23,6 +30,12 @@ export default class FieldView extends View {
 	 */
 	figureView = null
 
+	/**
+	 * Creates an instance of a FieldView
+	 * @param {FieldPosition} position - The position of the FieldView on the chess board.
+	 * @param {BoardView} boardView - The BoardView to place the field on.
+	 * @param {Board} boardModel - The model of the chess board.
+	 */
 	constructor(position, boardView, boardModel) {
 		super()
 
@@ -32,6 +45,9 @@ export default class FieldView extends View {
 		this._boardModel = boardModel
 	}
 	
+	/**
+	 * Renders the FieldView.
+	 */
 	Render() {
 		const fieldLength = this._boardView.fieldLength
 		const labelLength = this._boardView.labelLength
@@ -61,6 +77,9 @@ export default class FieldView extends View {
 		this._boardView.mainSvgDom.appendChild(this._dom)
 	}
 
+	/**
+	 * If the user clicks this unselected FieldView, to select it.
+	 */
 	select() {
 		this._dom.classList.add('selected')
 
@@ -68,6 +87,9 @@ export default class FieldView extends View {
 		this._boardView.mainSvgDom.appendChild(this._dom)
 	}
 
+	/**
+	 * If the user clicks this already selected FieldView, to unselect it.
+	 */
 	unselect() {
 		this._dom.classList.remove('selected')
 
@@ -75,6 +97,10 @@ export default class FieldView extends View {
 		this._boardView.mainSvgDom.prepend(this._dom)
 	}
 
+	/**
+	 * Adds a FigureView to this FieldView.
+	 * @param {FigureView} figureView - The given FigureView.
+	 */
 	addFigureView(figureView) {
 		if(this.figureView !== null) {
 			throw 'Failed to add FigureView: There is already an other FigureView on this FieldView!'
@@ -85,6 +111,9 @@ export default class FieldView extends View {
 		this._dom.appendChild(this.figureView.dom)
 	}
 
+	/**
+	 * Removes a FigureView from this FieldView.
+	 */
 	removeFigureView() {
 		this._dom.removeChild(this.figureView.dom)
 

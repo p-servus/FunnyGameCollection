@@ -34,6 +34,7 @@ export default [
       'jsdoc/require-returns-type': 'error',
       'jsdoc/require-returns-description': 'error',
       'jsdoc/require-returns-check': 'error',
+      "jsdoc/no-undefined-types": 1, // to avoid 'is defined but never used' when importing types only for jsdoc-comments
     }
   }
 ]

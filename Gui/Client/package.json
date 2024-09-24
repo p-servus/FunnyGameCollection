@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "lint": "npx eslint"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/p-servus/FunnyGameCollection.git"
